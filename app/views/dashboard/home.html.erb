@@ -1,2 +1,7 @@
-<h1>Dashboard#home</h1>
-<p>Find me in app/views/dashboard/home.html.erb</p>
+<h1>Our cool Overwatch stat app</h1>
+
+<%= form_tag("/players/fetch_data", remote: true, method: "get") do %>
+  <%= label_tag(:tag, "Search for:") %>
+  <%= text_field_tag(:tag) %>
+  <%= submit_tag("Search") %>
+<% end %>
