@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607155518) do
+ActiveRecord::Schema.define(version: 20160607173254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,10 @@ ActiveRecord::Schema.define(version: 20160607155518) do
     t.integer  "wins"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "player_id"
   end
+
+  add_index "overall_stats", ["player_id"], name: "index_overall_stats_on_player_id", using: :btree
 
   create_table "players", force: :cascade do |t|
     t.string   "account_type"
@@ -46,4 +49,5 @@ ActiveRecord::Schema.define(version: 20160607155518) do
   end
 
   add_foreign_key "game_stats", "players"
+  add_foreign_key "overall_stats", "players"
 end
