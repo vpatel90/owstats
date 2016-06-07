@@ -2,15 +2,7 @@ class Player < ActiveRecord::Base
   has_many :game_stats
   has_one :overall_stat
 
-  def get_stats
-    response = HTTParty.get("https://owapi.net/api/v1/u/#{self.tag}/stats")
-    if response["battletag"]
-      store_data(response)
-      {message: "Stored Success"}
-    else
-      {message: "Unable to get a Response due to invalid battletag"}
-    end
-  end
+  validates :tag, presence: true, uniqueness: {case_sensitive: false}
 
   def store_data(response)
     # new_gs = response["game_stats"]
