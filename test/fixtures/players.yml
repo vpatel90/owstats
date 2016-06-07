@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account_type: MyString
+  tag: MyString
+  region: MyString
+
+two:
+  account_type: MyString
+  tag: MyString
+  region: MyString
