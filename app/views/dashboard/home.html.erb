@@ -1,6 +1,6 @@
 <h1>Our cool Overwatch stat app</h1>
 
-<%= form_tag("/players/fetch_data", remote: true, method: "get") do %>
+<%= form_tag("/players/fetch_data", id:"find-player", remote: true, method: "get") do %>
   <%= label_tag(:tag, "Search for:") %>
   <%= text_field_tag(:tag) %>
   <%= submit_tag("Search") %>
