@@ -1,9 +1,22 @@
 
 <h3><%= @player.display_name %></h3>
 
+<h5>Overall Statistics</h5>
 <p>Winner of <%= @player.overall_stat.win_rate %>% of games played.</p>
 <% if @player.overall_stat.wins >= @player.overall_stat.losses %>
   <p><%= @player.overall_stat.games %> games played with <%= @player.overall_stat.wins %> wins and <%= @player.overall_stat.losses %> losses.</p>
 <% else %>
   <p><%= @player.overall_stat.games %> games played with <%= @player.overall_stat.losses %> losses and <%= @player.overall_stat.wins %> wins.</p>
 <% end %>
+
+<h5>Average Statistics per game</h5>
+<div class="row">
+  <span class="col s6">Medals <%= @player.avg_medals %></span> <span class="col s6">Eliminations <%= @player.avg_elims %></span>
+</div>
+<div class="row">
+  <span class="col s6">Final Blows <%= @player.avg_kills %></span> <span class="col s6">Deaths <%= @player.avg_deaths %></span>
+</div>
+
+<div class="row">
+  <span class="col s6">Healing <%= @player.avg_healing %></span> <span class="col s6">Damage <%= @player.avg_damage %></span>
+</div>
