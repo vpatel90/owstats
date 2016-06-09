@@ -27,4 +27,8 @@ class Player < ActiveRecord::Base
       game_stats.create(name: stat)
     end
   end
+
+  def display_name
+    self.tag.sub(/[-]/, '#')
+  end
 end
