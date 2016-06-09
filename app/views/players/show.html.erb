@@ -1,2 +1,9 @@
 
-<h3> <%= @player.display_name %></h3>
+<h3><%= @player.display_name %></h3>
+
+<p>Winner of <%= @player.overall_stat.win_rate %>% of games played.</p>
+<% if @player.overall_stat.wins >= @player.overall_stat.losses %>
+  <p><%= @player.overall_stat.games %> games played with <%= @player.overall_stat.wins %> wins and <%= @player.overall_stat.losses %> losses.</p>
+<% else %>
+  <p><%= @player.overall_stat.games %> games played with <%= @player.overall_stat.losses %> losses and <%= @player.overall_stat.wins %> wins.</p>
+<% end %>
