@@ -13,4 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+
+var ready;
+ready = function() {
+  $("#find-player[data-remote]").on("ajax:success", function (e, data, status, xhr){
+
+      // do something with the response later
+
+    })
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
 //= require_tree .

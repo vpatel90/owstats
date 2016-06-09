@@ -1,6 +1,15 @@
 class PlayersController < ApplicationController
+  def show
+    @player = Player.find(params[:id])
+  end
+
   def fetch_data
-    r = get_stats
+    response = get_stats
+    if response[:message] == "Success"
+      render js: "window.location = '/players/#{@player.id}'"
+    else
+      render json: response
+    end
   end
 
   private
@@ -11,9 +20,10 @@ class PlayersController < ApplicationController
     if response["battletag"]
       player = create_new_player unless player
       player.store_data(response)
-      {message: "Stored Success"}
+      @player = player
+      {message: "Success"}
     else
-      {message: "Unable to get a Response due to invalid battletag"}
+      {message: "Invalid Battletag", status: :unprocessable_entity}
     end
   end
 
