@@ -27,4 +27,32 @@ class Player < ActiveRecord::Base
       game_stats.create(name: stat)
     end
   end
+
+  def display_name
+    self.tag.sub(/[-]/, '#')
+  end
+
+  def avg_medals
+    self.game_stats[6].average
+  end
+
+  def avg_elims
+    self.game_stats[1].average
+  end
+
+  def avg_kills
+    self.game_stats[0].average
+  end
+
+  def avg_deaths
+    self.game_stats[3].average
+  end
+
+  def avg_healing
+    self.game_stats[5].average
+  end
+
+  def avg_damage
+    self.game_stats[4].average
+  end
 end
