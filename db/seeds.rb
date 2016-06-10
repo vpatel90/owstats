@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+HEROES = ['Bastion', 'D.Va', 'Genji', 'Hanzo',
+          'Junkrat',  'Lúcio', 'McCree', 'Mercy',
+          'Pharah', 'Reaper', 'ReinHardt', 'Roadhog',
+          'Soldier: 76', 'Symmetra', 'Torbjörn',
+          'Widowmaker', 'Winston', 'Zarya', 'Zenyatta', 'Tracer', 'Mei']
+HEROES.each do |name|
+  Hero.create(name: name)
+end
