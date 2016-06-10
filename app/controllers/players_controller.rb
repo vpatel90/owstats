@@ -21,6 +21,7 @@ class PlayersController < ApplicationController
     if response["battletag"]
       player = create_new_player(tag) unless player
       player.store_data(response)
+      player.store_player_hero_data
       @player = player
       {message: "Success"}
     else
