@@ -1,8 +1,9 @@
 class Player < ActiveRecord::Base
   has_many :game_stats, dependent: :destroy
   has_one :overall_stat, dependent: :destroy
+  has_many :player_heros, dependent: :destroy
 
-  after_create :create_init_stats
+  after_create :create_init_stats, :create_init_player_heroes
 
   STATS = ["final blows", "eliminations", "kpd", "deaths", "damage", "healing", "medals"]
 
@@ -25,6 +26,12 @@ class Player < ActiveRecord::Base
     OverallStat.create(player_id: self.id)
     STATS.each do |stat|
       game_stats.create(name: stat)
+    end
+  end
+
+  def create_init_player_heroes
+    Hero.all.each do |hero|
+      player_heros.create(hero_id: hero.id)
     end
   end
 
