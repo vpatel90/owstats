@@ -22,6 +22,14 @@ class Player < ActiveRecord::Base
 
   end
 
+  def store_player_hero_data
+    player_heros.each do |player_hero|
+      response = HTTParty.get("https://owapi.net/api/v1/u/#{self.tag}/heroes/#{player_hero.hero.id}")
+      player_hero.store_stats(response["stats"]) unless response["stats"].empty?
+    end
+
+  end
+
   def create_init_stats
     OverallStat.create(player_id: self.id)
     STATS.each do |stat|
